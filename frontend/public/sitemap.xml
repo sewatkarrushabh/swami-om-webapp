@@ -2,5 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://swamiomtiffinservice.netlify.app/</loc>
+    <loc>https://swamiomtiffinservice.netlify.app/about</loc>
+    <loc>https://swamiomtiffinservice.netlify.app/location</loc>
+     <loc>https://swamiomtiffinservice.netlify.app/reviews</loc>
   </url>
 </urlset>
