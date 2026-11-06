@@ -57,7 +57,7 @@ const en = {
       date: "Event date",
       description: "Event details and requirements",
       descriptionPlaceholder: "Tell us about the event, menu, timing, or special requests.",
-      submit: "Submit Catering Enquiry",
+      submit: "Submit to WhatsApp",
       close: "Close catering enquiry form",
     },
     enquiry: {
@@ -376,6 +376,7 @@ const en = {
     },
     kmFrom: "{{dist}} km from kitchen",
     areaDelivery: "{{name}} Area Delivery",
+    priceEstimator: "Price Estimator",
     lunchSlot: "Lunch Slot",
     lunchBy: "By 12:30 PM",
     lunchPrep: "Prep at 10:45 AM",
@@ -603,7 +604,7 @@ const mr = {
       date: "कार्यक्रमाची तारीख",
       description: "कार्यक्रमाचे तपशील आणि गरजा",
       descriptionPlaceholder: "कार्यक्रम, मेन्यू, वेळ किंवा खास विनंतीबद्दल सांगा.",
-      submit: "केटरिंग चौकशी पाठवा",
+      submit: "व्हॉट्सअ‍ॅपवर पाठवा",
       close: "केटरिंग चौकशी फॉर्म बंद करा",
     },
     enquiry: {
@@ -943,6 +944,7 @@ const mr = {
     },
     kmFrom: "स्वयंपाकघरापासून {{dist}} किमी",
     areaDelivery: "{{name}} परिसरातील डिलिव्हरी",
+    priceEstimator: "किंमत अंदाज",
     lunchSlot: "दुपारची वेळ",
     lunchBy: "12:30 पर्यंत",
     lunchPrep: "तयारी सकाळी 10:45 ला",

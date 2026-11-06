@@ -211,7 +211,6 @@ export default function PuneMap({ locations = [] }) {
         {locations.map((location) => (
           (() => {
             const distance = nearestKitchen(location.lat, location.lng).dist
-            const zone = zoneFromDist(distance)
 
             return (
               <Marker
@@ -232,11 +231,7 @@ export default function PuneMap({ locations = [] }) {
                 <Popup>
                   <div style={{ fontFamily: 'Noto Sans, sans-serif', fontSize: 13, minWidth: 170 }}>
                     <span style={{ color: '#59413a', fontSize: 12 }}>
-                      {t('map.kmFromKitchen', { dist: distance.toFixed(1) })} · {zone === 'inner'
-                        ? t('map.zoneInner')
-                        : zone === 'mid'
-                          ? t('map.zoneMid')
-                          : t('map.zoneOuter')}
+                      {t('map.kmFromKitchen', { dist: distance.toFixed(1) })}
                     </span>
                     <br/>
                     <strong style={{ color: '#9b2f00', fontSize: 13 }}>
@@ -264,7 +259,7 @@ export default function PuneMap({ locations = [] }) {
                   {geocodeLoading ? t('map.locating') : `📍 ${pin.label}`}
                 </strong><br/>
                 <span style={{ color: '#59413a', fontSize: 12 }}>
-                  {t('map.kmFromKitchen', { dist: pin.dist })} · {pin.zone === 'inner' ? t('map.zoneInner') : pin.zone === 'mid' ? t('map.zoneMid') : t('map.zoneOuter')}
+                  {t('map.kmFromKitchen', { dist: pin.dist })}
                 </span>
               </div>
             </Popup>

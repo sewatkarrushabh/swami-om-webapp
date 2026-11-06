@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
-  Search,
-  LocateFixed,
   Sun,
   Moon,
   ThumbsUp,
@@ -118,16 +116,6 @@ export default function LocationPage() {
   const setFreq = useLocationStore((s) => s.setFreq);
   const setDuration = useLocationStore((s) => s.setDuration);
 
-  const [query, setQuery] = useState(pin.label);
-  const [searching, setSearching] = useState(false);
-  const [searchError, setSearchError] = useState("");
-  const [gpsError, setGpsError] = useState("");
-
-  // Keep the input in sync when the pin moves (map click, drag, chip)
-  useEffect(() => {
-    setQuery(pin.label);
-  }, [pin.label]);
-
   const price = estimatePrice(pin.price, people, freq, duration);
   const zone = {
     ...ZONE_INFO[pin.zone],
@@ -148,38 +136,6 @@ export default function LocationPage() {
   const selectLocation = (value) => {
     const [lat, lng] = value.split(",").map(Number);
     if (Number.isFinite(lat) && Number.isFinite(lng)) setPin(lat, lng);
-  };
-
-  // Type a locality and press Enter → look it up (Nominatim, limited to Pune)
-  const searchLocality = async (e) => {
-    e.preventDefault();
-    const q = query.trim();
-    if (!q) return;
-    setSearching(true);
-    setSearchError("");
-    try {
-      const url =
-        "https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=in" +
-        "&viewbox=73.55,18.80,74.15,18.25&bounded=1&q=" +
-        encodeURIComponent(q + ", Pune");
-      const data = await (await fetch(url)).json();
-      if (data[0]) setPin(parseFloat(data[0].lat), parseFloat(data[0].lon));
-      else setSearchError(t("location.errNotFound"));
-    } catch {
-      setSearchError(t("location.errSearch"));
-    } finally {
-      setSearching(false);
-    }
-  };
-
-  const useGps = () => {
-    setGpsError("");
-    if (!navigator.geolocation) return setGpsError(t("location.errGpsNA"));
-    navigator.geolocation.getCurrentPosition(
-      (p) => setPin(p.coords.latitude, p.coords.longitude),
-      () => setGpsError(t("location.errGps")),
-      { enableHighAccuracy: true, timeout: 10000 },
-    );
   };
 
   const meals = freqOptions.find((f) => f.value === freq)?.label;
@@ -228,48 +184,12 @@ export default function LocationPage() {
         </div>
       </section>
 
-      {/* ── 2. Location search and full-width map ── */}
+      {/* ── 2. Location choices and full-width map ── */}
       <section className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 pb-14">
-        {/* Search and full-width map */}
+        {/* Location choices and full-width map */}
         <div className="flex min-w-0 flex-col gap-5">
-          {/* Search card */}
+          {/* Location choices */}
           <div className={card}>
-            <form onSubmit={searchLocality}>
-              <label htmlFor="locality" className={label}>
-                {t("location.searchLabel")}
-              </label>
-              <div className="mt-2 flex flex-col gap-2.5 sm:flex-row">
-                <div className="flex flex-1 items-center gap-2.5 rounded-md border border-transparent bg-surface-container px-3.5 text-on-surface-variant focus-within:border-primary-container">
-                  <Search size={18} aria-hidden />
-                  <input
-                    id="locality"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder={t("location.placeholder")}
-                    autoComplete="off"
-                    className="min-w-0 flex-1 bg-transparent py-3 text-on-surface outline-none"
-                  />
-                </div>
-                <button type="button" onClick={useGps} className={softBtn}>
-                  <LocateFixed size={16} aria-hidden /> {t("location.gps")}
-                </button>
-                <button type="submit" className={softBtn} disabled={searching}>
-                  <Search size={16} aria-hidden /> {t("location.search")}
-                </button>
-              </div>
-            </form>
-
-            {searching && (
-              <p className="mt-2 text-[0.8rem] text-on-surface-variant">
-                {t("location.searching")}
-              </p>
-            )}
-            {(searchError || gpsError) && (
-              <p className="mt-2 text-[0.8rem] text-error" role="alert">
-                {searchError || gpsError}
-              </p>
-            )}
-
             <div className="mt-[18px] flex items-center justify-between">
               <span className={label}>{t("location.popular")}</span>
               <span className="text-xs text-tertiary">
@@ -317,7 +237,7 @@ export default function LocationPage() {
         <aside className="block">
           <div className={card}>
             <h2 className="mt-4 font-heading text-[1.45rem] font-bold">
-              {t("location.areaDelivery", { name: pin.label })}
+              {t("location.priceEstimator")}
             </h2>
             <p className="mt-2 text-[0.9rem] leading-relaxed text-on-surface-variant">
               {zone.note}
