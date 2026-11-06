@@ -92,7 +92,7 @@ function getReviewInitials(review) {
   );
 }
 
-export default function HomePage({ reviews = [] }) {
+export default function HomePage({ reviews = [],reviewSummary }) {
   const { t } = useTranslation();
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [cateringOpen, setCateringOpen] = useState(false);
@@ -443,8 +443,8 @@ export default function HomePage({ reviews = [] }) {
                   ★★★★★
                 </span>
                 <span className="font-heading text-[15px] font-bold text-on-surface">
-                  {averageRating
-                    ? `${averageRating} / 5.0`
+                  {reviewSummary.averageRating
+                    ? `${reviewSummary.averageRating.toFixed(1)} / 5.0`
                     : t("home.reviews.rating")}
                 </span>
                 <span className="text-[12.5px] text-on-surface-variant">

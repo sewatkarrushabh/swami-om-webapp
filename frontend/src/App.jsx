@@ -88,7 +88,7 @@ function App() {
       <main className="flex-1">
         <Suspense fallback={<PageLoader />}>
           <Routes>
-            <Route path="/" element={<HomePage reviews={reviews} />} />
+            <Route path="/" element={<HomePage reviews={reviews} reviewSummary={reviewSummary}/>} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/location" element={<LocationPage />} />
             <Route
