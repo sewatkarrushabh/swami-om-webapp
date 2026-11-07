@@ -99,8 +99,8 @@ export default function Reviews({
   return (
     <main className="min-h-full bg-surface">
       <SEO
-        title="Customer Reviews | Swami Om Tiffin Service Nagpur"
-        description="Read what our customers say about our tiffin service in Nagpur, and share your own review."
+        title="Customer Reviews | Swami Om Tiffin Service Pune"
+        description="Read what our customers say about our tiffin service in Pune, and share your own review."
         path="/reviews"
       />
       <section className="relative overflow-hidden bg-linear-to-br from-surface-container-highest via-surface-container-low to-white px-5 pb-14 pt-14 sm:px-8">

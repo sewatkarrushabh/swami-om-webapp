@@ -68,8 +68,8 @@ export default function AboutPage() {
   return (
     <main className="flex-1 bg-surface pb-16">
       <SEO
-        title="About Us | Swami Om Tiffin Service Nagpur"
-        description="Learn about Swami Om Tiffin Service: home-cooked meals made fresh every day for homes, students, and offices in Nagpur."
+        title="About Us | Swami Om Tiffin Service Pune"
+        description="Learn about Swami Om Tiffin Service: home-cooked meals made fresh every day for homes, students, and offices in Pune."
         path="/about"
       />
       {/* ── HERO BANNER ── */}

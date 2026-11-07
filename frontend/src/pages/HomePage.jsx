@@ -113,8 +113,8 @@ export default function HomePage({ reviews = [],reviewSummary }) {
     // flex-1 keeps the footer at the bottom (your #root is a flex column)
     <main className="flex-1 bg-surface">
       <SEO
-        title="Swami Om Tiffin Service | Home-Style Tiffin in Nagpur"
-        description="Fresh, home-style veg tiffin delivered daily in Nagpur. Monthly and weekly plans. Call or WhatsApp to order."
+        title="Swami Om Tiffin Service | Home-Style Tiffin in Pune"
+        description="Fresh, home-style veg tiffin delivered daily in Pune. Monthly and weekly plans. Call or WhatsApp to order."
         path="/"
       />
       {/* ────────────── HERO ────────────── */}

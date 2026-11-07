@@ -157,8 +157,8 @@ export default function LocationPage() {
     // flex-1 pushes the footer to the bottom (your #root is a flex column)
     <main className="flex-1 bg-background text-on-surface">
       <SEO
-        title="Delivery Areas & Location | Swami Om Tiffin Service Nagpur"
-        description="Find our kitchen and the Nagpur areas we deliver to. Check if we serve your locality."
+        title="Delivery Areas & Location | Swami Om Tiffin Service Pune"
+        description="Find our kitchen and the Pune areas we deliver to. Check if we serve your locality."
         path="/location"
       />
       {/* ── 1. Page intro ── */}
